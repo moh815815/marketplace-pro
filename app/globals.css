@@ -1,0 +1,108 @@
+/* app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy:   #0A1628;
+  --navy2:  #0F1F3D;
+  --navy3:  #162847;
+  --navy4:  #1E3356;
+  --gold:   #D4A843;
+  --gold2:  #E8C070;
+  --orange: #E8692A;
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--navy);
+    color: white;
+    direction: rtl;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy2); }
+  ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.4); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-gold to-brand-orange text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 hover:shadow-lg active:scale-95;
+  }
+  .btn-outline {
+    @apply border border-gold/40 text-gold font-bold py-3 px-6 rounded-xl transition-all duration-200 hover:bg-gold/10 active:scale-95;
+  }
+  .btn-ghost {
+    @apply text-gray-400 font-semibold py-2 px-4 rounded-lg transition-all hover:text-gold hover:bg-gold/10;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-navy-2 border border-white/[0.06] rounded-2xl;
+  }
+  .card-hover {
+    @apply card transition-all duration-300 hover:-translate-y-1 hover:border-gold/30 hover:shadow-xl;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full bg-navy-3 border border-white/10 text-white placeholder-gray-500 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:border-gold font-cairo text-sm;
+  }
+  .label {
+    @apply block text-xs text-gray-400 font-semibold mb-1.5;
+  }
+  .select {
+    @apply input cursor-pointer;
+  }
+
+  /* Badges */
+  .badge-green  { @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400; }
+  .badge-orange { @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-500/15 text-orange-400; }
+  .badge-red    { @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-500/15 text-red-400; }
+  .badge-blue   { @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-500/15 text-blue-400; }
+  .badge-gold   { @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-gold/15 text-gold; }
+
+  /* Section */
+  .section { @apply py-8; }
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6; }
+
+  /* Gold text gradient */
+  .text-gold-gradient {
+    @apply bg-gradient-to-r from-gold to-brand-orange bg-clip-text text-transparent;
+  }
+
+  /* Glass card */
+  .glass {
+    @apply bg-navy-2/80 backdrop-blur-md border border-white/[0.07];
+  }
+
+  /* Product card video overlay */
+  .video-play-overlay {
+    @apply absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200;
+  }
+
+  /* Sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-2.5 px-3 py-2.5 rounded-lg cursor-pointer text-sm font-bold text-gray-400 transition-all duration-200 hover:bg-gold/10 hover:text-gold;
+  }
+  .nav-item.active { @apply bg-gold/10 text-gold; }
+
+  /* Table */
+  .data-table { @apply w-full text-sm border-collapse; }
+  .data-table th { @apply bg-navy-3 px-4 py-3 text-right text-gray-400 font-semibold border-b border-white/[0.07]; }
+  .data-table td { @apply px-4 py-3 border-b border-white/[0.04] align-middle; }
+  .data-table tr:hover td { @apply bg-white/[0.015]; }
+}
+
+@layer utilities {
+  .animate-fade-in  { animation: fadeIn  0.3s ease-in-out; }
+  .animate-slide-up { animation: slideUp 0.35s ease-out; }
+}
+
+@keyframes fadeIn  { from { opacity: 0; }                        to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
